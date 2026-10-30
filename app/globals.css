@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Theme tokens (RGB triplets). Dark is the default; <html data-theme="light"> switches.
+     A nested data-theme="dark" element (e.g. the camera) stays dark inside light mode. */
+  :root,
+  [data-theme="dark"] {
+    --iron-50: 250 250 250;
+    --iron-100: 244 244 245;
+    --iron-200: 228 228 231;
+    --iron-300: 212 212 216;
+    --iron-400: 161 161 170;
+    --iron-500: 113 113 122;
+    --iron-600: 82 82 91;
+    --iron-700: 63 63 70;
+    --iron-800: 39 39 42;
+    --iron-850: 31 31 35;
+    --iron-900: 24 24 27;
+    --iron-950: 11 11 14;
+    --volt-50: 247 254 231;
+    --volt-100: 236 252 203;
+    --volt-200: 217 249 157;
+    --volt-300: 190 242 100;
+    --volt-400: 163 230 53;
+    --volt-500: 132 204 22;
+    --volt-600: 101 163 13;
+    --volt-700: 77 124 15;
+    --volt-800: 63 98 18;
+    --volt-900: 54 83 20;
+    --blood-300: 255 122 147;
+    --blood-400: 240 80 110;
+    --blood-500: 220 20 60;
+    --blood-600: 184 15 50;
+    --blood-700: 147 12 40;
+    --glow: 163 230 53;
+    --grid: 255 255 255;
+    --grid-a: 0.035;
+    --hero-a: 0.14;
+    color-scheme: dark;
+  }
+
+  [data-theme="light"] {
+    --iron-50: 9 9 11;
+    --iron-100: 24 24 27;
+    --iron-200: 39 39 42;
+    --iron-300: 63 63 70;
+    --iron-400: 82 82 91;
+    --iron-500: 104 104 113;
+    --iron-600: 161 161 170;
+    --iron-700: 212 212 216;
+    --iron-800: 228 228 231;
+    --iron-850: 250 250 250;
+    --iron-900: 255 255 255;
+    --iron-950: 244 244 246;
+    --volt-50: 54 83 20;
+    --volt-100: 54 83 20;
+    --volt-200: 63 98 18;
+    --volt-300: 63 98 18;
+    --volt-400: 77 124 15;
+    --volt-500: 101 163 13;
+    --volt-600: 77 124 15;
+    --volt-700: 63 98 18;
+    --volt-800: 54 83 20;
+    --volt-900: 54 83 20;
+    --blood-300: 168 17 50;
+    --blood-400: 190 18 56;
+    --blood-500: 220 20 60;
+    --blood-600: 184 15 50;
+    --blood-700: 147 12 40;
+    --glow: 77 124 15;
+    --grid: 0 0 0;
+    --grid-a: 0.05;
+    --hero-a: 0.09;
+    color-scheme: light;
+  }
+
+  /* Amber (Pro badge / demo notices) needs darker text on a light page. */
+  [data-theme="light"] .text-amber-100,
+  [data-theme="light"] .text-amber-200 {
+    color: rgb(146 64 14);
+  }
+  [data-theme="light"] .text-amber-300 {
+    color: rgb(180 83 9);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-iron-950 text-iron-100 font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-volt-400 text-iron-950;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-volt-400;
+  }
+
+  /* Slim, on-brand scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.iron.700") transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-display text-base font-bold uppercase tracking-wider transition duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-volt {
+    @apply btn bg-volt-400 text-iron-950 hover:bg-volt-300 hover:shadow-glow-volt active:translate-y-px;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-iron-100 ring-1 ring-iron-700 hover:bg-iron-900 hover:ring-iron-500;
+  }
+
+  /* Surfaces */
+  .panel {
+    @apply rounded-2xl bg-iron-900/70 ring-1 ring-iron-800 backdrop-blur;
+  }
+
+  /* Small uppercase labels */
+  .eyebrow {
+    @apply font-display text-xs font-bold uppercase tracking-stencil text-volt-400;
+  }
+
+  /* Pill / chip */
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ring-1;
+  }
+
+  /* Form controls */
+  .field {
+    @apply w-full rounded-lg bg-iron-950 px-3 py-2.5 text-sm text-iron-100 ring-1 ring-iron-700 transition placeholder:text-iron-500 hover:ring-iron-500 focus:outline-none focus:ring-2 focus:ring-volt-400;
+  }
+}
