@@ -1,0 +1,26 @@
+export const AREAS = [
+  "Agrabad, Chattogram",
+  "Banani",
+  "Barishal",
+  "Bashundhara",
+  "Comilla",
+  "Dhanmondi",
+  "Gazipur",
+  "Gulshan",
+  "Jatrabari",
+  "Khilgaon",
+  "Khulna",
+  "Mirpur",
+  "Mohammadpur",
+  "Motijheel",
+  "Mymensingh",
+  "Narayanganj",
+  "Rajshahi",
+  "Rangpur",
+  "Savar",
+  "Sylhet",
+  "Tongi",
+  "Uttara",
+] as const;
+
+export const OTHER_AREA = "Other";
